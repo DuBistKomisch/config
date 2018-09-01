@@ -1,3 +1,4 @@
+bash ~/.bashrc
 tmux ~/.tmux.conf
 vim ~/.vim
 vimrc ~/.vimrc

@@ -1,0 +1,34 @@
+command=/usr/lib/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+[mediaplayer]
+interval=1
+
+[cpu_usage]
+label=
+interval=5
+
+[temperature]
+command=/usr/lib/i3blocks/$BLOCK_NAME --chip coretemp-isa-0000
+label=
+interval=10
+
+[disk]
+label=
+instance=/
+interval=30
+
+[memory]
+label=
+interval=30
+
+[volume]
+command=~/.config/i3blocks/volume
+label=♪
+min_width=♪ 100%
+interval=10
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1

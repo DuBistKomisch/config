@@ -14,7 +14,8 @@ exec --no-startup-id unclutter
 
 # quick actions
 bindsym $mod+Return exec --no-startup-id st
-bindsym $mod+space exec --no-startup-id j4-dmenu-desktop
+bindsym $mod+space exec --no-startup-id rofi -show combi
+bindsym $mod+Ctrl+space exec --no-startup-id rofi -show window
 bindsym $mod+x [urgent=latest] focus
 bindsym $mod+q kill
 

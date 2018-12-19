@@ -55,12 +55,11 @@ set laststatus=2
 set noshowmode
 
 " decoration
-"let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-"let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-"set termguicolors
-let g:gruvbox_termcolors=16
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
 let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark='hard'
+"let g:gruvbox_contrast_dark='hard'
 set background=dark
 colorscheme gruvbox
 set number

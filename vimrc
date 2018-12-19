@@ -9,6 +9,7 @@ set viminfo=
 set mouse=a
 set ttyfast
 set lazyredraw
+set splitbelow splitright
 " copy mode, allows selection in a graphical terminal
 nnoremap <leader>y :set nonumber<CR> :set mouse=<CR>
 nnoremap <leader>Y :set number<CR> :set mouse=a<CR>
@@ -28,6 +29,7 @@ set softtabstop=2
 set tabstop=2
 
 " search
+set wildmode=longest,list,full
 set ignorecase
 set smartcase
 set incsearch

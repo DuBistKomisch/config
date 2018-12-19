@@ -1,4 +1,4 @@
 rofi.theme: /usr/share/rofi/themes/gruvbox-dark.rasi
-rofi.modi: combi,drun,ssh,window
+rofi.modi: combi,window,run
 rofi.combi-modi: drun,ssh
 rofi.font: Hack 12

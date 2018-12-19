@@ -4,6 +4,9 @@ floating_modifier $mod
 # decoration
 font pango:Cantarell 11
 hide_edge_borders both
+default_border pixel
+default_floating_border normal
+bindsym $mod+b border toggle
 
 # background
 exec --no-startup-id compton --config ~/.config/compton.conf -d :0 -b
@@ -16,7 +19,7 @@ exec --no-startup-id unclutter
 bindsym $mod+Return exec --no-startup-id st
 bindsym $mod+space exec --no-startup-id rofi -show combi
 bindsym $mod+Ctrl+space exec --no-startup-id rofi -show window
-bindsym $mod+x [urgent=latest] focus
+bindsym $mod+a [urgent=latest] focus
 bindsym $mod+q kill
 
 # system commands
@@ -51,36 +54,51 @@ bindsym $mod+Print mode "$mode_screenshot"
 
 # layout
 
+bindsym $mod+w layout toggle tabbed stacking
+bindsym $mod+e layout toggle split
 bindsym $mod+t split toggle
 
 bindsym $mod+f fullscreen toggle
-
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# focus/movement
-
 bindsym $mod+Shift+f floating toggle
-#bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+s sticky toggle
 
-bindsym $mod+o focus parent
-bindsym $mod+i focus child
+# resize
+
+bindsym $mod+z gaps inner current plus 5
+bindsym $mod+Shift+z gaps inner current minus 5
+bindsym $mod+Ctrl+Shift+z gaps inner current set 0
+
+bindsym $mod+x gaps outer current plus 5
+bindsym $mod+Shift+x gaps outer current minus 5
+bindsym $mod+Ctrl+Shift+x gaps outer current set 0
+
+bindsym $mod+y resize grow left 5 px or 1 ppt
+bindsym $mod+u resize grow down 5 px or 1 ppt
+bindsym $mod+i resize grow up 5 px or 1 ppt
+bindsym $mod+o resize grow right 5 px or 1 ppt
+
+bindsym $mod+Shift+y resize shrink left 5 px or 1 ppt
+bindsym $mod+Shift+u resize shrink down 5 px or 1 ppt
+bindsym $mod+Shift+i resize shrink up 5 px or 1 ppt
+bindsym $mod+Shift+o resize shrink right 5 px or 1 ppt
+
+# focus
+
+focus_on_window_activation urgent
+focus_wrapping no
+
+bindsym $mod+g focus mode_toggle
+
+bindsym $mod+m focus parent
+bindsym $mod+n focus child
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-bindsym $mod+Ctrl+Shift+h move workspace to output left
-bindsym $mod+Ctrl+Shift+j move workspace to output down
-bindsym $mod+Ctrl+Shift+k move workspace to output up
-bindsym $mod+Ctrl+Shift+l move workspace to output right
+bindsym $mod+Prior workspace prev_on_output
+bindsym $mod+Next workspace next_on_output
 
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -93,6 +111,29 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+# movement
+
+workspace_auto_back_and_forth yes
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Ctrl+h move to output left
+bindsym $mod+Ctrl+j move to output down
+bindsym $mod+Ctrl+k move to output up
+bindsym $mod+Ctrl+l move to output right
+
+bindsym $mod+Ctrl+Shift+h move workspace to output left
+bindsym $mod+Ctrl+Shift+j move workspace to output down
+bindsym $mod+Ctrl+Shift+k move workspace to output up
+bindsym $mod+Ctrl+Shift+l move workspace to output right
+
+bindsym $mod+Shift+Prior move to workspace prev
+bindsym $mod+Shift+Next move to workspace next
+bindsym $mod+Tab workspace back_and_forth
+
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -104,23 +145,9 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# resize
-set $mode_resize resize: (<) shrink width, (>) grow width, (v) shrink height, (^) grow height
-mode "$mode_resize" {
-  bindsym h resize shrink width 10 px or 10 ppt
-  bindsym j resize grow height 10 px or 10 ppt
-  bindsym k resize shrink height 10 px or 10 ppt
-  bindsym l resize grow width 10 px or 10 ppt
-  bindsym Shift+h resize shrink width 100 px or 100 ppt
-  bindsym Shift+j resize grow height 100 px or 100 ppt
-  bindsym Shift+k resize shrink height 100 px or 100 ppt
-  bindsym Shift+l resize grow width 100 px or 100 ppt
-  bindsym $mod+h resize shrink width 1 px or 1 ppt
-  bindsym $mod+j resize grow height 1 px or 1 ppt
-  bindsym $mod+k resize shrink height 1 px or 1 ppt
-  bindsym $mod+l resize grow width 1 px or 1 ppt
+# mark
 
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-bindsym $mod+r mode "$mode_resize"
+bindsym $mod+c mark mark
+bindsym $mod+Shift+c unmark mark
+bindsym $mod+v [con_mark=mark] focus
+bindsym $mod+Shift+v swap container with mark mark

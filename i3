@@ -19,6 +19,7 @@ exec --no-startup-id unclutter
 bindsym $mod+Return exec --no-startup-id st
 bindsym $mod+space exec --no-startup-id rofi -show combi
 bindsym $mod+Ctrl+space exec --no-startup-id rofi -show window
+bindsym $mod+Shift+space exec --no-startup-id rofi -show run
 bindsym $mod+a [urgent=latest] focus
 bindsym $mod+q kill
 
@@ -151,3 +152,8 @@ bindsym $mod+c mark mark
 bindsym $mod+Shift+c unmark mark
 bindsym $mod+v [con_mark=mark] focus
 bindsym $mod+Shift+v swap container with mark mark
+
+# overrides
+
+for_window [class="keepassxc"] floating enable
+for_window [class="Vivi"] floating enable

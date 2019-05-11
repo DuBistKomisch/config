@@ -10,6 +10,7 @@ set mouse=a
 set ttyfast
 set lazyredraw
 set splitbelow splitright
+set ttymouse=sgr
 " copy mode, allows selection in a graphical terminal
 nnoremap <leader>y :set nonumber<CR> :set mouse=<CR>
 nnoremap <leader>Y :set number<CR> :set mouse=a<CR>
@@ -36,19 +37,11 @@ set incsearch
 set hlsearch
 nmap <leader>q :nohlsearch<CR>
 nnoremap <leader>a :Ag!<space>
+nmap <leader>w :cclose<CR>
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-" movement
-let g:list_of_normal_keys = ["h", "j", "k", "l", "-", "+"]
-let g:list_of_visual_keys = ["h", "j", "k", "l", "-", "+"]
-let g:list_of_insert_keys = []
-let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
-let g:hardtime_default_on = 1
-let g:hardtime_allow_different_key = 1
-let g:hardtime_maxcount = 5
 
 " statusbar
 set laststatus=2
@@ -98,3 +91,9 @@ function! CopyGitLink(...) range
 endfunction
 nmap <leader>gl :call CopyGitLink()<CR>
 vmap <leader>gl :call CopyGitLink(1)<CR>
+
+" QFEnter
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.vopen = ['<C-v>']
+let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
+let g:qfenter_keymap.topen = ['<C-t>']

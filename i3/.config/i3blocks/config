@@ -6,6 +6,34 @@ markup=none
 instance=mpd
 interval=5
 
+[wifi]
+interval=10
+separator=false
+
+[iface]
+instance=wlp2s0
+interval=10
+separator=false
+
+[bandwidth]
+instance=wlp2s0
+interval=1
+
+[iface]
+#instance=enp62s0u1u2
+# via mbeat dongle
+instance=enp0s20f0u2u2
+# via mbeat dongle and monitor
+#instance=enp0s20f0u2u4u3
+interval=10
+separator=false
+
+[bandwidth]
+#instance=enp62s0u1u2
+instance=enp0s20f0u2u2
+#instance=enp0s20f0u2u4u3
+interval=1
+
 [cpu_usage]
 label= 
 min_width= 99.99%
@@ -28,6 +56,11 @@ interval=30
 [volume]
 label=♪ 
 min_width=♪ 100%
+interval=10
+signal=1
+
+[battery]
+label= 
 interval=10
 
 [time]

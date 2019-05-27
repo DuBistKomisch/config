@@ -1,12 +1,23 @@
 set $mod Mod4
 floating_modifier $mod
 
+# fake-outputs 3840x1080+0+0
+
 # decoration
 font pango:Cantarell 12
 hide_edge_borders both
 default_border pixel
 default_floating_border normal
 bindsym $mod+b border toggle
+bar {
+  output eDP-1-1
+  output HDMI-1-1
+  output DP-1-1
+  output DP-1-2
+  position top
+  status_command i3blocks
+  font pango:Hack, Icons 12
+}
 
 # background
 exec_always --no-startup-id ~/.fehbg
@@ -67,6 +78,7 @@ bindsym $mod+Shift+s sticky toggle
 
 # resize
 
+gaps inner 10
 bindsym $mod+z gaps inner current plus 5
 bindsym $mod+Shift+z gaps inner current minus 5
 bindsym $mod+Ctrl+Shift+z gaps inner current set 0
@@ -171,3 +183,54 @@ for_window [class="Pavucontrol"] floating enable
 for_window [title="Remmina Remote Desktop Client"] floating enable
 for_window [class="Vivi"] floating enable
 for_window [title="OpenGL renderer"] floating enable
+
+# special keys
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+#bindsym Shift+XF86MonBrightnessDown exec xbacklight -set 1
+#bindsym Shift+XF86MonBrightnessUp exec xbacklight -set 100
+bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id sudo bash -c "echo 0 > /sys/class/backlight/intel_backlight/brightness"
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id sudo bash -c "echo 1 > /sys/class/backlight/intel_backlight/brightness"
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id sudo bash -c "cat /sys/class/backlight/intel_backlight/max_brightness > /sys/class/backlight/intel_backlight/brightness"
+bindsym Ctrl+Shift+XF86MonBrightnessDown exec --no-startup-id sudo bash -c "echo 500 > /sys/class/backlight/intel_backlight/brightness"
+bindsym Ctrl+Shift+XF86MonBrightnessUp exec --no-startup-id sudo bash -c "echo 1000 > /sys/class/backlight/intel_backlight/brightness"
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id xcalib -co 75 -a
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id xcalib -clear
+bindsym XF86AudioLowerVolume exec --no-startup-id "pamixer --decrease 2 && pkill -RTMIN+1 i3blocks"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pamixer --increase 2 && pkill -RTMIN+1 i3blocks"
+bindsym XF86AudioMute exec --no-startup-id "pamixer --toggle-mute && pkill -RTMIN+1 i3blocks"
+bindsym XF86AudioPlay exec --no-startup-id "mpc toggle"
+
+# xrandr
+set $mode_xrandr xrandr: (1) eDP only, (2) eDP + HDMI, (3) DP2 + HDMI, (4) 4k DP1 only, (5) 4k DP2 only, (7) 3 but sideways, (c) combine, (k) c but sideways, (C) uncombine
+set $edp_off --output eDP-1-1 --off
+set $edp_1080 --output eDP-1-1 --mode 1920x1080
+set $hdmi_off --output HDMI-1-1 --off
+set $hdmi_1080 --output HDMI-1-1 --mode 1920x1080
+set $dp1_off --output DP-1-1 --off
+set $dp1_1080 --output DP-1-1 --mode 1920x1080
+set $dp1_4k --output DP-1-1 --mode 3840x2160
+set $dp2_off --output DP-1-2 --off
+set $dp2_1080 --output DP-1-2 --mode 1920x1080
+set $dp2_4k --output DP-1-2 --mode 3840x2160
+set $combine --setmonitor combined 1920/0x2160/0+0+0 DP-1-2,HDMI-1-1
+set $combine2 --setmonitor combined 3840/0x1080/0+0+0 DP-1-2,HDMI-1-1
+set $uncombine --delmonitor combined
+mode "$mode_xrandr" {
+  bindsym 1 exec --no-startup-id "xrandr $edp_1080 $hdmi_off $dp1_off $dp2_off", exec --no-startup-id ~/.fehbg, mode "default"
+  bindsym 2 exec --no-startup-id "xrandr $edp_1080 $hdmi_1080 --above eDP-1-1 $dp1_off $dp2_off", exec --no-startup-id ~/.fehbg, mode "default"
+  bindsym Shift+2 exec --no-startup-id "xrandr $edp_off $hdmi_1080 $dp1_off $dp2_off", exec --no-startup-id ~/.fehbg, mode "default"
+  bindsym 3 exec --no-startup-id "xrandr $edp_off $hdmi_1080 --below DP-1-2 $dp1_off $dp2_1080", exec --no-startup-id ~/.fehbg, mode "default"
+  bindsym 4 exec --no-startup-id "xrandr $edp_off $hdmi_off $dp1_4k $dp2_off", exec --no-startup-id ~/.fehbg, mode "default"
+  bindsym 5 exec --no-startup-id "xrandr $edp_off $hdmi_off $dp1_off $dp2_4k", exec --no-startup-id ~/.fehbg, mode "default"
+  bindsym 6 exec --no-startup-id "xrandr $edp_off $hdmi_off $dp1_1080 $dp2_off", exec --no-startup-id ~/.fehbg, mode "default"
+  bindsym 7 exec --no-startup-id "xrandr $edp_off $hdmi_1080 --right-of DP-1-2 $dp1_off $dp2_1080", exec --no-startup-id ~/.fehbg, mode "default"
+
+  bindsym c exec --no-startup-id "xrandr $combine", mode "default"
+  bindsym k exec --no-startup-id "xrandr $combine2", mode "default"
+  bindsym Shift+c exec --no-startup-id "xrandr $uncombine", mode "default"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+d mode "$mode_xrandr"

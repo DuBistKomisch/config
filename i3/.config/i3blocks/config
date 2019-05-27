@@ -6,6 +6,23 @@ markup=none
 instance=mpd
 interval=5
 
+[iface]
+instance=br0
+interval=10
+separator=false
+
+[bandwidth]
+instance=br0
+interval=1
+
+[bandwidth]
+instance=enp5s0
+interval=1
+
+[bandwidth]
+instance=wlp4s0
+interval=1
+
 [cpu_usage]
 label= 
 min_width= 99.99%
@@ -14,7 +31,7 @@ interval=5
 [temperature]
 label= 
 interval=10
-SENSOR_CHIP=coretemp-isa-0000
+SENSOR_CHIP=k10temp-pci-00c3
 
 [disk]
 label= 

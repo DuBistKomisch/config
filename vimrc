@@ -1,8 +1,44 @@
-" include plugins
-execute pathogen#infect()
+if &compatible
+  set nocompatible
+endif
+
+let dein_plugin_dir=$HOME.'/.vim/dein'
+let dein_install_dir=dein_plugin_dir.'/repos/github.com/Shougo/dein.vim'
+let &runtimepath.=','.dein_install_dir
+if dein#load_state(dein_plugin_dir)
+  call dein#begin(dein_plugin_dir)
+  call dein#add(dein_install_dir)
+
+  " languages
+  call dein#add('elixir-lang/vim-elixir')
+  call dein#add('jeroenbourgois/vim-actionscript')
+  call dein#add('keith/swift.vim')
+  call dein#add('leafgarland/typescript-vim')
+  call dein#add('mustache/vim-mustache-handlebars')
+  call dein#add('mxw/vim-jsx')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('peitalin/vim-jsx-typescript')
+  call dein#add('rust-lang/rust.vim')
+  call dein#add('udalov/kotlin-vim')
+
+  " tools
+  call dein#add('bling/vim-airline')
+  call dein#add('ctrlpvim/ctrlp.vim')
+  call dein#add('iautom8things/gitlink-vim')
+  call dein#add('mileszs/ack.vim')
+  call dein#add('morhetz/gruvbox')
+  call dein#add('qpkorr/vim-renamer')
+  call dein#add('yssl/QFEnter')
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+if dein#check_install()
+  call dein#install()
+endif
 
 " compatibility
-set nocompatible
 set backspace=2
 set hidden
 set viminfo=
@@ -36,8 +72,9 @@ set smartcase
 set incsearch
 set hlsearch
 nmap <leader>q :nohlsearch<CR>
-nnoremap <leader>a :Ag!<space>
+nnoremap <leader>a :Ack!<space>
 nmap <leader>w :cclose<CR>
+let g:ackprg = 'ag --vimgrep'
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0

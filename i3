@@ -61,6 +61,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+t split toggle
 
 bindsym $mod+f fullscreen toggle
+bindsym $mod+Ctrl+f fullscreen toggle global
 bindsym $mod+Shift+f floating toggle
 bindsym $mod+Shift+s sticky toggle
 

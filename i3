@@ -14,6 +14,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id ~/.fehbg
 exec_always --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id unclutter
+exec_always --no-startup-id alttab -font xft:Hack:pixelsize=15:antialias=true:autohint=true
 
 # quick actions
 bindsym $mod+Return exec --no-startup-id st
@@ -155,5 +156,5 @@ bindsym $mod+Shift+v swap container with mark mark
 
 # overrides
 
-for_window [class="keepassxc"] floating enable
+for_window [class="KeePassXC"] floating enable
 for_window [class="Vivi"] floating enable

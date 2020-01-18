@@ -73,6 +73,7 @@ set incsearch
 set hlsearch
 nmap <leader>q :nohlsearch<CR>
 nnoremap <leader>a :Ack!<space>
+nnoremap <leader>A :Ack!<CR>
 nmap <leader>w :cclose<CR>
 let g:ackprg = 'ag --vimgrep'
 let g:ctrlp_match_window = 'bottom,order:ttb'

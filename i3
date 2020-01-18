@@ -157,5 +157,7 @@ bindsym $mod+Shift+v swap container with mark mark
 
 # overrides
 
+for_window [class="Blueman-manager"] floating enable
 for_window [class="KeePassXC"] floating enable
+for_window [class="Pavucontrol"] floating enable
 for_window [class="Vivi"] floating enable

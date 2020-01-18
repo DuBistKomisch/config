@@ -20,6 +20,6 @@ echo "$QUALITY" | awk '{printf "%d%%\n", int($0 * 100)}' # short text
 
 if [ -n "$ADDRESS" ]; then
     echo "$QUALITY" | awk '{
-        printf "#%.2X%.2X%.2X", sqrt(1 - $0) * 255, sqrt($0) * 255, 0
+        printf "#%.2X%.2X%.2X\n", sqrt(1 - $0) * 255, sqrt($0) * 255, 0
     }'
 fi

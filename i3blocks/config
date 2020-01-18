@@ -1,34 +1,40 @@
-command=/usr/lib/i3blocks/$BLOCK_NAME
+command=./$BLOCK_NAME
 separator_block_width=15
 markup=none
 
 [mediaplayer]
-interval=1
+instance=mpd
+interval=5
 
 [cpu_usage]
-label=
+label= 
+min_width= 99.99%
 interval=5
 
 [temperature]
-command=/usr/lib/i3blocks/$BLOCK_NAME --chip coretemp-isa-0000
-label=
+label= 
 interval=10
+SENSOR_CHIP=coretemp-isa-0000
 
 [disk]
-label=
+label= 
 instance=/
 interval=30
 
 [memory]
-label=
+label= 
 interval=30
 
 [volume]
-command=~/.config/i3blocks/volume
-label=♪
+label=♪ 
 min_width=♪ 100%
 interval=10
 
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+instance=%Y-%m-%d %H:%M:%S
 interval=1
+format=json
+
+[emtpy]
+command=echo
+interval=once

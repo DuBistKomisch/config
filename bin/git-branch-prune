@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+action=${1:--d}
+
+git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch $action

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export CR_RENDER_FORCE_PRESENT_MAIN_THREAD=0
+/usr/bin/virtualbox

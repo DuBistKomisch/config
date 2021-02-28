@@ -1,20 +1,30 @@
-[user]
-  email = me@jakebarn.es
-  name = Jake Barnes
-  signingkey = 4D161C7487F18303
 [commit]
   gpgsign = true
-[filter "lfs"]
-  required = true
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-[pager]
-  status = true
-[includeIf "gitdir:~/vivi/"]
-  path = ~/config/vivi.gitconfig
+[core]
+  excludesfile = ~/config/gitignore
 [diff]
   submodule = log
   tool = vimdiff
 [difftool]
   prompt = false
+[init]
+  defaultBranch = master
+[pager]
+  status = true
+[pull]
+  ff = only
+[user]
+  email = me@jakebarn.es
+  name = Jake Barnes
+  signingkey = 4D161C7487F18303
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  process = git-lfs filter-process
+  required = true
+  smudge = git-lfs smudge -- %f
+[lfs]
+  concurrenttransfers = 100
+
+[includeIf "gitdir:~/vivi/"]
+  path = ~/config/vivi.gitconfig

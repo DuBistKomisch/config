@@ -10,6 +10,9 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
+bind-key @ join-pane -h -s !
+bind-key C-@ join-pane -s !
+
 set-option -g default-terminal 'tmux-256color'
 set-option -as terminal-overrides ',xterm*:Tc:sitm=\E[3m'
 set-option -g status-keys vi

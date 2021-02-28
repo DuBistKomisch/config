@@ -1,0 +1,10 @@
+visualizer_data_source = /tmp/mpd.jake.fifo
+visualizer_output_name = fifo
+visualizer_in_stereo = yes
+
+user_interface = alternative
+screen_switcher_mode = playlist, media_library
+clock_display_seconds = yes
+display_bitrate = yes
+ignore_leading_the = yes
+ignore_diacritics = yes

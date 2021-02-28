@@ -1,9 +1,12 @@
 bash ~/.bashrc
 gitconfig ~/.gitconfig
 i3 ~/.config/i3/config
-i3blocks ~/.config/i3blocks
+i3blocks/ ~/.config/i3blocks/
+mpd.conf ~/.config/mpd/mpd.conf
+ncmpcpp ~/.ncmpcpp/config
 pam_environment ~/.pam_environment
-rofi ~/.config/rofi/config
+rofi.rasi ~/.config/rofi/config.rasi
+systemd/ ~/.config/systemd/
 tmux ~/.tmux.conf
-vim ~/.vim
+vim/ ~/.vim/
 vimrc ~/.vimrc

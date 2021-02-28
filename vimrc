@@ -2,38 +2,37 @@ if &compatible
   set nocompatible
 endif
 
+" dein begin
 let dein_plugin_dir=$HOME.'/.vim/dein'
 let dein_install_dir=dein_plugin_dir.'/repos/github.com/Shougo/dein.vim'
 let &runtimepath.=','.dein_install_dir
-if dein#load_state(dein_plugin_dir)
-  call dein#begin(dein_plugin_dir)
-  call dein#add(dein_install_dir)
+call dein#begin(dein_plugin_dir)
+call dein#add(dein_install_dir)
 
-  " languages
-  call dein#add('elixir-lang/vim-elixir')
-  call dein#add('jeroenbourgois/vim-actionscript')
-  call dein#add('keith/swift.vim')
-  call dein#add('leafgarland/typescript-vim')
-  call dein#add('mustache/vim-mustache-handlebars')
-  call dein#add('mxw/vim-jsx')
-  call dein#add('pangloss/vim-javascript')
-  call dein#add('peitalin/vim-jsx-typescript')
-  call dein#add('rust-lang/rust.vim')
-  call dein#add('udalov/kotlin-vim')
+" languages
+call dein#add('elixir-lang/vim-elixir')
+call dein#add('hashivim/vim-terraform')
+call dein#add('jeroenbourgois/vim-actionscript')
+call dein#add('keith/swift.vim')
+call dein#add('leafgarland/typescript-vim')
+call dein#add('mustache/vim-mustache-handlebars')
+call dein#add('mxw/vim-jsx')
+call dein#add('pangloss/vim-javascript')
+call dein#add('peitalin/vim-jsx-typescript')
+call dein#add('rust-lang/rust.vim')
+call dein#add('udalov/kotlin-vim')
 
-  " tools
-  call dein#add('bling/vim-airline')
-  call dein#add('ctrlpvim/ctrlp.vim')
-  call dein#add('iautom8things/gitlink-vim')
-  call dein#add('mileszs/ack.vim')
-  call dein#add('morhetz/gruvbox')
-  call dein#add('qpkorr/vim-renamer')
-  call dein#add('yssl/QFEnter')
+" tools
+call dein#add('bling/vim-airline')
+call dein#add('ctrlpvim/ctrlp.vim')
+call dein#add('iautom8things/gitlink-vim')
+call dein#add('mileszs/ack.vim')
+call dein#add('morhetz/gruvbox')
+call dein#add('qpkorr/vim-renamer')
+call dein#add('yssl/QFEnter')
 
-  call dein#end()
-  call dein#save_state()
-endif
-
+" dein end
+call dein#end()
 if dein#check_install()
   call dein#install()
 endif

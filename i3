@@ -9,12 +9,13 @@ default_floating_border normal
 bindsym $mod+b border toggle
 
 # background
-exec --no-startup-id compton --config ~/.config/compton.conf -d :0 -b
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id ~/.fehbg
 exec_always --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id unclutter
 exec_always --no-startup-id alttab -font xft:Hack:pixelsize=15:antialias=true:autohint=true
+exec_always --no-startup-id xss-lock -- i3lock -n -e -c 000000
+exec --no-startup-id keepassxc
 
 # quick actions
 bindsym $mod+Return exec --no-startup-id st
@@ -27,7 +28,7 @@ bindsym $mod+q kill
 # system commands
 set $mode_system system: (l) lock, (L) logout, (s) shutdown, (S) reboot, (r) reload, (R) restart
 mode "$mode_system" {
-  bindsym l exec --no-startup-id i3lock -e -c 000000, mode "default"
+  bindsym l exec --no-startup-id loginctl lock-session, mode "default"
   bindsym Shift+l exec --no-startup-id i3-msg exit, mode "default"
   bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"
   bindsym Shift+s exec --no-startup-id systemctl reboot, mode "default"
@@ -99,9 +100,15 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 bindsym $mod+Prior workspace prev_on_output
 bindsym $mod+Next workspace next_on_output
+bindsym $mod+Ctrl+Left workspace prev_on_output
+bindsym $mod+Ctrl+Right workspace next_on_output
 
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -158,6 +165,8 @@ bindsym $mod+Shift+v swap container with mark mark
 # overrides
 
 for_window [class="Blueman-manager"] floating enable
+for_window [class="Gnome-calculator"] floating enable
 for_window [class="KeePassXC"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [title="Remmina Remote Desktop Client"] floating enable
 for_window [class="Vivi"] floating enable

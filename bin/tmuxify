@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+# main
+main_dir="$HOME"
+main_window_names=(
+  "todo"
+  "pacman"
+  "music"
+)
+main_window_dirs=(
+  ""
+  ""
+  ""
+)
+main_window_commands=(
+  ""
+  "yay"
+  "ncmpcpp"
+)
+
+name=$1
+# namerefs > indirection
+declare -n dir="${name}_dir"
+declare -n window_names="${name}_window_names"
+declare -n window_dirs="${name}_window_dirs"
+declare -n window_commands="${name}_window_commands"
+
+cd ${dir}
+
+if ! tmux has-session -t $name 2>/dev/null; then
+  tmux new-session -d -s $name -c ${dir}
+
+  for ((window = 0; window < ${#window_names[@]}; ++window)); do
+    window_name=${window_names[window]}
+    window_dir=${window_dirs[window]}
+    window_command=${window_commands[window]}
+    if [ $window -eq 0 ]; then
+      # window_dir ignored for first window
+      tmux rename-window ${window_name}
+    else
+      tmux new-window -n ${window_name} -c "${dir}/${window_dir}"
+    fi
+    if [ -n "${window_command}" ]; then
+      tmux send-keys "${window_command}" C-m
+    fi
+  done
+
+  tmux select-window -t ${window_names[0]}
+fi
+
+tmux attach-session -t $name

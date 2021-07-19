@@ -14,7 +14,7 @@ main_window_dirs=(
 )
 main_window_commands=(
   ""
-  "yay"
+  "paru"
   "ncmpcpp"
 )
 
@@ -27,7 +27,7 @@ declare -n window_commands="${name}_window_commands"
 
 cd ${dir}
 
-if ! tmux has-session -t $name 2>/dev/null; then
+if ! tmux has-session -t "=${name}" 2>/dev/null; then
   tmux new-session -d -s $name -c ${dir}
 
   for ((window = 0; window < ${#window_names[@]}; ++window)); do
@@ -48,4 +48,4 @@ if ! tmux has-session -t $name 2>/dev/null; then
   tmux select-window -t ${window_names[0]}
 fi
 
-tmux attach-session -t $name
+tmux attach-session -t "=${name}"

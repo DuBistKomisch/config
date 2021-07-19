@@ -1,0 +1,6 @@
+#!/bin/bash
+
+host=$1
+port=${2:-22}
+
+infocmp -x | ssh $host -p $port -T 'tic -x -'

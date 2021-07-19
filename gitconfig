@@ -9,8 +9,14 @@
   prompt = false
 [init]
   defaultBranch = master
+[interactive]
+  diffFilter = delta --color-only
 [pager]
-  status = true
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+  status = delta
 [pull]
   ff = only
 [user]
@@ -25,6 +31,11 @@
   smudge = git-lfs smudge -- %f
 [lfs]
   concurrenttransfers = 100
+
+[delta]
+  features = side-by-side line-numbers
+  syntax-theme = gruvbox-dark
+  whitespace-error-style = 22 reverse
 
 [includeIf "gitdir:~/vivi/"]
   path = ~/config/vivi.gitconfig

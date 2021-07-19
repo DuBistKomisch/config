@@ -19,3 +19,9 @@ eval "$(rbenv init - --no-rehash 2>/dev/null)"
 
 # disable ctrl-s/q flow control
 stty -ixon
+
+# https://github.com/BurntSushi/ripgrep/issues/1719
+export RIPGREP_CONFIG_PATH="$HOME/config/ripgreprc"
+
+# view man pages in vim
+export MANPAGER="vim -M +MANPAGER -"

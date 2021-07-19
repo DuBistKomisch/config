@@ -1,3 +1,4 @@
+alacritty.yml ~/.config/alacritty/alacritty.yml
 bash ~/.bashrc
 gitconfig ~/.gitconfig
 i3 ~/.config/i3/config

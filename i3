@@ -9,16 +9,15 @@ default_floating_border normal
 bindsym $mod+b border toggle
 
 # background
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id ~/.fehbg
-exec_always --no-startup-id setxkbmap -option caps:escape
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id unclutter
-exec_always --no-startup-id alttab -font xft:Hack:pixelsize=15:antialias=true:autohint=true
-exec_always --no-startup-id xss-lock -- i3lock -n -e -c 000000
+exec --no-startup-id alttab -font xft:Hack:pixelsize=15:antialias=true:autohint=true
+exec --no-startup-id xss-lock -- i3lock -n -e -c 000000
 exec --no-startup-id keepassxc
 
 # quick actions
-bindsym $mod+Return exec --no-startup-id st
+bindsym $mod+Return exec --no-startup-id alacritty
 bindsym $mod+space exec --no-startup-id rofi -show combi
 bindsym $mod+Ctrl+space exec --no-startup-id rofi -show window
 bindsym $mod+Shift+space exec --no-startup-id rofi -show run
@@ -170,3 +169,4 @@ for_window [class="KeePassXC"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [title="Remmina Remote Desktop Client"] floating enable
 for_window [class="Vivi"] floating enable
+for_window [title="OpenGL renderer"] floating enable

@@ -1,7 +1,7 @@
 #!/usr/bin/sh -e
 
 # This defaults to the current default sink
-SINK="${BLOCK_INSTANCE:-$(pacmd list-sinks | awk '/index:/ { found = 0 } /* index:/ { found = 1 } /name:/ && found { print $2 }' | sed -e 's/<\(.*\)>/\1/')}"
+SINK="${BLOCK_INSTANCE:-$(pactl get-default-sink)}"
 
 # The first parameter sets the step to change the volume by (and units to display)
 # This may be in in % or dB (eg. 5% or 3dB)
@@ -10,11 +10,11 @@ STEP="${1:-2%}"
 #------------------------------------------------------------------------
 
 volume() {
-    pacmd list-sinks | awk "/name:/{
-        def = \$2 == \"<${SINK}>\"
-    }/muted:/ && def{
+    pactl list sinks | awk "/Name:/{
+        def = \$2 == \"${SINK}\"
+    }/Mute:/ && def{
         mut = \$2 == \"yes\"
-    }/^\s*volume:/ && def{
+    }/^\s*Volume:/ && def{
         vol = \$5
     }END{
         if (mut) {printf \"muted (%s)\", vol} else {print vol}

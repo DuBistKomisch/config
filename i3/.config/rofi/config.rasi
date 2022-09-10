@@ -2,5 +2,6 @@ configuration {
   modi: "combi,window,run";
   font: "Hack 12";
   combi-modi: "drun,ssh";
-  theme: "/usr/share/rofi/themes/gruvbox-dark.rasi";
 }
+
+@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"

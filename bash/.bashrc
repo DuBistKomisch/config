@@ -1,5 +1,6 @@
-export PATH="$HOME/bin:$HOME/config/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export EDITOR="vim"
+export BROWSER="firefox-developer-edition"
 
 # history
 unset HISTFILE
@@ -21,7 +22,7 @@ eval "$(rbenv init - --no-rehash 2>/dev/null)"
 stty -ixon
 
 # https://github.com/BurntSushi/ripgrep/issues/1719
-export RIPGREP_CONFIG_PATH="$HOME/config/ripgreprc"
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 # view man pages in vim
 export MANPAGER="vim -M +MANPAGER -"

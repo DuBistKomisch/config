@@ -18,6 +18,60 @@ main_window_commands=(
   "ncmpcpp"
 )
 
+# noutube_backend
+noutube_backend_dir="$HOME/dev/noutube/backend"
+noutube_backend_window_names=(
+  "git"
+  "server"
+  "console"
+  "app"
+)
+noutube_backend_window_dirs=(
+  ""
+  ""
+  ""
+  "app"
+)
+noutube_backend_window_commands=(
+  "git fetch --prune && git-branch-prune"
+  "bundle exec rails s"
+  "bundle exec rails c"
+  "vim"
+)
+
+# noutube_web
+noutube_web_dir="$HOME/dev/noutube/web"
+noutube_web_window_names=(
+  "git"
+  "ember"
+  "app"
+)
+noutube_web_window_dirs=(
+  ""
+  ""
+  "app"
+)
+noutube_web_window_commands=(
+  "git fetch --prune && git-branch-prune"
+  "yarn && npx ember serve"
+  "vim"
+)
+
+# noutube_scrape
+noutube_scrape_dir="$HOME/dev/noutube/scrape"
+noutube_scrape_window_names=(
+  "git"
+  "src"
+)
+noutube_scrape_window_dirs=(
+  ""
+  "src"
+)
+noutube_scrape_window_commands=(
+  "git fetch --prune && git-branch-prune"
+  "vim"
+)
+
 name=$1
 # namerefs > indirection
 declare -n dir="${name}_dir"

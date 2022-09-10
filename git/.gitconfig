@@ -1,7 +1,7 @@
 [commit]
   gpgsign = true
 [core]
-  excludesfile = ~/config/gitignore
+  excludesfile = ~/.gitignore
 [diff]
   submodule = log
   tool = vimdiff
@@ -33,9 +33,6 @@
   concurrenttransfers = 100
 
 [delta]
-  features = side-by-side line-numbers
+  features = line-numbers
   syntax-theme = gruvbox-dark
   whitespace-error-style = 22 reverse
-
-[includeIf "gitdir:~/vivi/"]
-  path = ~/config/vivi.gitconfig
